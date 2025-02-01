@@ -1,0 +1,5 @@
+tqdm
+streamlit
+python-dotenv
+google-genai==0.3
+python-Levenshtein
