@@ -64,11 +64,16 @@ def get_services_offered_data(services_json_path = "./services.json", list_outpu
 
     def structure_service(service_datapoint):
         service_structurised = ""
-        service_structurised += f"Section: {service_datapoint['section']}\n"
-        service_structurised += f"Name: {service_datapoint['name']}\n"
-        service_structurised += f"Service Country: {service_datapoint['country']}\n"
-        service_structurised += f"Summary: {service_datapoint['summary']}\n"
-        service_structurised += f"Sample Situations / High Level Prerequisites: {service_datapoint['situations']}\n"
+        # service_structurised += f"Section: {service_datapoint['section']}\n"
+        # service_structurised += f"Name: {service_datapoint['name']}\n"
+        # service_structurised += f"Service Country: {service_datapoint['country']}\n"
+        # service_structurised += f"Summary: {service_datapoint['summary']}\n"
+        # service_structurised += f"Sample Situations / High Level Prerequisites: {service_datapoint['situations']}\n"
+        service_structurised += f"<section>\n{service_datapoint['section']}\n</section>\n\n"
+        service_structurised += f"<name>\n{service_datapoint['name']}\n</name>\n\n"
+        service_structurised += f"<service_country>\n{service_datapoint['country']}\n</service_country>\n\n"
+        service_structurised += f"<summary>\n{service_datapoint['summary']}\n</summary>\n\n"
+        service_structurised += f"<sample_situations_and_high_level_prerequisites>\n{service_datapoint['situations']}\n</sample_situations_and_high_level_prerequisites>\n"
         return service_structurised
 
     if list_output:
@@ -79,7 +84,7 @@ def get_services_offered_data(services_json_path = "./services.json", list_outpu
     for idx in range(1, len(services_data) + 1):
         if country and Levenshtein.distance(country.lower(), services_data[idx-1]["country"].lower()) < 0.1:
             if list_output:
-                SERVICES_DESCRIPTION.append("<service_offered>\n" + structure_service(services_data[idx-1]) + "</service_offered>")
+                SERVICES_DESCRIPTION.append("<service_offered>\n" + structure_service(services_data[idx-1]) + "</service_offered>\n")
             else:
                 SERVICES_DESCRIPTION += f"<service_idx_{idx}>\n"
                 SERVICES_DESCRIPTION += f"IDX: {idx}\n"
