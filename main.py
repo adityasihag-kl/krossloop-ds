@@ -299,7 +299,7 @@ def process_COATT_single_thread(document_path, service_data, country = None, mod
     # try getting gemini response
     responses = []
     try:
-        analysis_recommendation_response = chat.send_message([data_source_pdf_obj, SYSTEM_CONTEMPLATION_PROMPT + f"\n<jurisdiction_country>\n{country}\n</jurisdiction_country>" + service_data])
+        analysis_recommendation_response = chat.send_message([data_source_pdf_obj, SYSTEM_CONTEMPLATION_PROMPT + f"\n<jurisdiction_country>\n{country}\n</jurisdiction_country>\n\n" + service_data])
         total_cost += calculate_cost(analysis_recommendation_response.usage_metadata.prompt_token_count, analysis_recommendation_response.usage_metadata.candidates_token_count, model_name)
         analysis_recommendation_response = analysis_recommendation_response.text
         responses.append(analysis_recommendation_response)
