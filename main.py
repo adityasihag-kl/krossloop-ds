@@ -419,9 +419,11 @@ def process_COATT_parallel(document_path, model_name = "gemini-1.5-pro", country
                 
                 # Example of applying some filter
                 if dp_parsed["impact_score"] > 7:
-                    service_filter_infoed = dp["service_data"][:dp["service_data"].index("Summary: ")]\
-                        .replace("<service_offered>\n", "")\
-                        .replace("<\\service_offered>", "")
+                    # service_filter_infoed = dp["service_data"][:dp["service_data"].index("Summary: ")]\
+                    #     .replace("<service_offered>\n", "")\
+                    #     .replace("<\\service_offered>", "")
+                    
+                    service_filter_infoed = f"Service IDX: {dp['original_idx']}\nSection: {extract_content(dp['service_data'], 'section').strip().strip('\n').strip()}\nName: {extract_content(dp['service_data'], 'name').strip().strip('\n').strip()}"
                     
                     filtered_results.append(
                         service_filter_infoed + "\n" +
