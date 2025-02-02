@@ -340,7 +340,7 @@ def process_COATT_single_thread(document_path, service_data, country = None, mod
 
 def process_COATT_parallel(document_path, model_name = "gemini-1.5-pro", country = None):
     # Suppose this returns a list of items you want to process
-    all_services_data = get_services_offered_data(list_output = True, country = country)[:25]
+    all_services_data = get_services_offered_data(list_output = True, country = country)
 
     # Decide number_of_threads
     number_of_threads = 10
@@ -452,5 +452,5 @@ def process_COATT_parallel(document_path, model_name = "gemini-1.5-pro", country
 if __name__ == "__main__":
     # response = process_COATT_parallel("/Users/adityasihag/Downloads/TRI 2023 Annual Report_AODA.pdf", "gemini-1.5-pro")
     # response = process_COATT_parallel("/Users/adityasihag/Desktop/projects/KL_insight/35.-Jaguar-Land-Rover-North-America-LLC - USA.pdf", "gemini-2.0-flash-exp", "United States of America")
-    response = process_COATT_parallel("/Users/adityasihag/Desktop/projects/KL_insight/nesco.pdf", "gemini-2.0-flash-exp", "United States of America")
+    response = process_COATT_parallel("/Users/adityasihag/Desktop/projects/KL_insight/nesco.pdf", "gemini-2.0-flash-exp", "India")
     # response = process_COATT_parallel("/Users/adityasihag/Desktop/projects/KL_insight/company_book.pdf", "gemini-exp-1206")
